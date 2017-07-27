@@ -23,3 +23,21 @@
 #             return 0
 #         else:
 #             return revx * cmp(x, 0)
+
+class Solution:
+    def reverse(self,x):
+        a = int(str(abs(x))[::-1])
+        if a > pow(2,31):
+            return 0
+        else:
+            if x>0:
+                return a
+            if x<0:
+                return a*(-1)
+            if x==0:
+                return 0
+
+s = Solution()
+print(s.reverse(100))
+print(s.reverse(-100))
+print(s.reverse(pow(2,32)))
