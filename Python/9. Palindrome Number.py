@@ -17,4 +17,4 @@ class Solution(object):
 
 s = Solution()
 # print(s.isPalindrome(100))
-print(s.isPalindrome(100))
+print(s.isPalindrome("aaa"))
