@@ -45,3 +45,28 @@ class Solution:
                     return True
             marked[start_x][start_y] = False
         return False
+
+class Solution2:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        # 使用深度优先搜索
+        if not board:   # 边界条件
+            return False
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                if self.dfs(board, i, j, word):
+                    return True
+        return False
+
+    def dfs(self, board, i, j, word):
+        if len(word) == 0: # 如果单词已经检查完毕
+            return True
+        if i < 0 or i >= len(board) or j < 0 or j >= len(board[0]) or word[0] != board[i][j]:  # 如果路径出界或者矩阵中的值不是word的首字母，返回False
+            return False
+        tmp = board[i][j]  # 如果找到了第一个字母，检查剩余的部分
+        #对于一轮深度搜索过程中，为了避免重复我们需要将搜索过的字符置为 0。
+        board[i][j] = '0'
+        res = self.dfs(board,i+1,j,word[1:]) or self.dfs(board,i-1,j,word[1:]) or self.dfs(board,i,j+1,word[1:]) or self.dfs(board, i, j-1, word[1:]) # 上下左右四个方向搜索
+
+        board[i][j] = tmp  # 标记过的点恢复原状，以便进行下一次搜索
+        return res
+

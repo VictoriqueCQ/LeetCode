@@ -1,3 +1,4 @@
+from typing import List
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
@@ -45,3 +46,5 @@ class Solution2:
             l2.next = self.mergeTwoLists(l1, l2.next)
             return l2
 
+# s = Solution()
+# print(s.mergeKLists([[1,4,5],[1,3,4],[2,6]]))

@@ -26,7 +26,7 @@ class Solution(object):
         for c in s:
             # print("i:"+c)
             if c in parmap:
-                # print("c:"+c)
+                print("c:"+c)
                 if parmap[c] != pars.pop():
                     return False
             else:

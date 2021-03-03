@@ -1,12 +1,10 @@
+from typing import List
 class Solution:
-    def __init__(self):
-        self.res = 0
-
-    def sumNums(self, n: int) -> int:
-        n > 1 and self.sumNums(n - 1)
-        self.res += n
-        return self.res
-
-
-s = Solution()
-print(s.sumNums(10))
+    def minPathSum(self, grid: List[List[int]]) -> int:
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if i == j == 0: continue
+                elif i == 0:  grid[i][j] = grid[i][j - 1] + grid[i][j]
+                elif j == 0:  grid[i][j] = grid[i - 1][j] + grid[i][j]
+                else: grid[i][j] = min(grid[i - 1][j], grid[i][j - 1]) + grid[i][j]
+        return grid[-1][-1]

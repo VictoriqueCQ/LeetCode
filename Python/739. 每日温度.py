@@ -16,3 +16,6 @@ class Solution:
             stack.append(i)
 
         return res
+
+s = Solution()
+print(s.dailyTemperatures([73, 74, 75, 71, 69, 72, 76, 73]))

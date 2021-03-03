@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
 
@@ -18,3 +21,27 @@ class Solution:
             return []
         backtracking([i for i in range(1, n + 1)], k, [])
         return all_combination
+
+
+    def combine2(self, n: int, k: int) -> List[List[int]]:
+        res = []
+
+        def backtrace(i, tmp):
+            print("i:",end="")
+            print(i)
+            print("tmp:",end="")
+            print(tmp)
+            if len(tmp) == k:
+                res.append(tmp)
+                return
+            for j in range(i, n + 1):
+                print("j:",end="")
+                print(j)
+                print(j+1,tmp+[j])
+                backtrace(j + 1, tmp + [j])
+
+        backtrace(1, [])
+        return res
+
+s = Solution()
+print(s.combine2(4,2))

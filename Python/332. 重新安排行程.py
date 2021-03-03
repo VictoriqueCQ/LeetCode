@@ -1,3 +1,5 @@
+from typing import List
+import collections
 class Solution:
     def findItinerary(self, tickets: List[List[str]]) -> List[str]:
         d = collections.defaultdict(list)   #邻接表
@@ -12,3 +14,6 @@ class Solution:
             ans.insert(0, f)    #放在最前
         dfs('JFK')
         return ans
+
+s= Solution()
+print(s.findItinerary([["MUC", "LHR"], ["JFK", "MUC"], ["SFO", "SJC"], ["LHR", "SFO"]]))
