@@ -1,3 +1,5 @@
+from typing import List
+import collections
 class Solution:
     def isBipartite(self, graph: List[List[int]]) -> bool:
         n = len(graph)
@@ -19,3 +21,32 @@ class Solution:
                             return False
 
         return True
+
+
+class Solution1:
+    def isBipartite(self, graph: List[List[int]]) -> bool:
+        # dfs time O(E+V), space O(V)
+        n = len(graph)
+        visited = [0] * n
+
+        stack = []
+        for i in range(n):
+            if visited[i] == 0:
+                stack.append(i)
+                visited[i] = 1
+
+                while stack:
+                    cur = stack.pop()
+
+                    for neighbor in graph[cur]:
+                        if visited[neighbor] == 0:
+                            stack.append(neighbor)
+                            visited[neighbor] = -visited[cur]
+                        else:
+                            if visited[neighbor] != -visited[cur]:
+                                return False
+        return True
+
+
+s = Solution1()
+print(s.isBipartite([[1,2,3],[0,2],[0,1,3],[0,2]]))
