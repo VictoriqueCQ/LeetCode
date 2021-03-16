@@ -74,12 +74,12 @@ class ListNode:
         self.prev = None
         self.next = None
 
-
+import collections
 class LRUCache2:
 
     def __init__(self, capacity: int):
         self.capacity = capacity
-        self.d = OrderedDict()
+        self.d = collections.OrderedDict()
 
     def get(self, key: int) -> int:
         v = self.d.get(key, -1)
@@ -94,6 +94,34 @@ class LRUCache2:
             self.d.popitem(last=False)
 
 
+class LRUCache3(object):
+    def __init__(self, size=5):
+        self.size = size
+        self.cache = dict()
+        self.key = []
+
+    def get(self, key):
+        if self.cache.has_key(key):
+            self.key.remove(key)
+            self.key.insert(0, key)
+            return self.cache[key]
+        else:
+            return None
+
+    def set(self, key, value):
+        if self.cache.has_key(key):
+            self.cache.pop(key)
+            self.cache[key] = value
+            self.key.remove(key)
+            self.key.insert(0, key)
+        elif len(self.cache) == self.size:
+            old_key = self.key.pop()
+            self.cache.pop(old_key)
+            self.key.insert(0, key)
+            self.cache[key] = value
+        else:
+            self.cache[key] = value
+            self.key.insert(0, key)
 
 # Your LRUCache object will be instantiated and called as such:
 # obj = LRUCache(capacity)

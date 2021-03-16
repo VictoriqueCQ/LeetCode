@@ -88,7 +88,11 @@ class Solution3:
             temp = node1
         return dummyHead.next
 
-
-
+def swapPairs(self, head: ListNode) -> ListNode:
+    if not head or not head.next:
+        return head
+    a, b = head, head.next
+    b.next, a.next = a, self.swapPairs(b.next)
+    return b
 
 
