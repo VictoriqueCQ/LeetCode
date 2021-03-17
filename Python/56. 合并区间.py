@@ -1,3 +1,4 @@
+from typing import List
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         intervals.sort(key=lambda x: x[0])
@@ -12,3 +13,7 @@ class Solution:
                 merged[-1][1] = max(merged[-1][1], interval[1])
 
         return merged
+
+
+s = Solution()
+print(s.merge([[10,30],[20,60],[80,100],[150,180]]))

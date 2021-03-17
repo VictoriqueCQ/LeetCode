@@ -1,3 +1,4 @@
+from typing import List
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         inf = int(1e9)
@@ -7,3 +8,5 @@ class Solution:
             maxprofit = max(price - minprice, maxprofit)
             minprice = min(price, minprice)
         return maxprofit
+s = Solution()
+print(s.maxProfit( [7,1,5,3,6,4]))
