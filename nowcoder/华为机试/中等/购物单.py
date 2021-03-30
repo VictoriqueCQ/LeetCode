@@ -89,3 +89,4 @@ while True:
         print(max([max(row) for row in a]))   # 这时候矩阵右下角并不是最大值，需要求整个矩阵的最大值
     except:
         break
+        
