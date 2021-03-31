@@ -19,3 +19,4 @@ class Solution:
             return ans
 
         return max(merge(pick_max(nums1, i), pick_max(nums2, k-i)) for i in range(k+1) if i <= len(nums1) and k-i <= len(nums2))
+
